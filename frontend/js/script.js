@@ -34,8 +34,4 @@ document.addEventListener("DOMContentLoaded", () => {
         container.innerHTML = "<p>Erro ao carregar os projetos. Tente novamente mais tarde.</p>";
       });
   });
-
-  function logar() {
-    window.location.href = "frontend/login.html";
-  }
   

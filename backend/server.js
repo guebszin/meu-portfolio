@@ -56,25 +56,13 @@ app.post('/api/projects', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
+  console.log(`Servidor rodando!`);
 });
 
 app.get('/frontend/admin.html', (req, res) => {
   res.redirect('/admin.html');
 });
 
-app.get('/frontend/login.html', (req, res) => {
-  res.redirect('/login.html');
-});
-
-app.post('/api/login', (req, res) => {
-  const { username, password } = req.body;
-  if (username === 'luis' && password === '26494587bA$') {
-    res.json({ success: true });
-  } else {
-    res.status(401).json({ message: 'Credenciais inválidas' });
-  }
-});
 
 
 
