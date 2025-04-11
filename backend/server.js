@@ -67,4 +67,15 @@ app.get('/frontend/login.html', (req, res) => {
   res.redirect('/login.html');
 });
 
+app.post('/api/login', (req, res) => {
+  const { username, password } = req.body;
+  if (username === 'luis' && password === '26494587bA$') {
+    res.json({ success: true });
+  } else {
+    res.status(401).json({ message: 'Credenciais inválidas' });
+  }
+});
+
+
+
 

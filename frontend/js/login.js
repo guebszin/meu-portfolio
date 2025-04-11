@@ -1,20 +1,32 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("login-form");
-    const erroDiv = document.getElementById("login-erro");
-  
-    form.addEventListener("submit", (e) => {
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('login-form');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-  
-      const usuario = document.getElementById("usuario").value.trim();
-      const senha = document.getElementById("senha").value.trim();
-  
-      // Autenticação simples
-      if (usuario === "luis" && senha === "26494587bA$") {
-        localStorage.setItem("logado", true);
-        window.location.href = "frontend/admin.html";
-      } else {
-        erroDiv.textContent = "Usuário ou senha inválidos!";
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          localStorage.setItem('auth', 'true');
+          window.location.href = '/admin.html'; // vai para painel
+        } else {
+          alert(data.message || 'Usuário ou senha inválidos');
+        }
+      } catch (err) {
+        console.error('Erro no login:', err);
+        alert('Erro ao tentar fazer login');
       }
     });
-  });
-  
+  }
+});
