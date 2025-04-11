@@ -36,6 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function logar() {
-    window.location.href = "frontend/admin.html";
+    window.location.href = "frontend/login.html";
   }
   
