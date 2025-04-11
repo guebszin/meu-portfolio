@@ -131,6 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Função de logout
   function logout() {
     localStorage.removeItem("logado");
-    window.location.href = "frontend\login.html";
+    window.location.href = "frontend/login.html";
   }
 });
