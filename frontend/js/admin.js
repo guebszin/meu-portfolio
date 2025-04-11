@@ -134,7 +134,3 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "frontend/login.html";
   }
 });
-
-function logar() {
-  window.location.href = "frontend/admin.html";
-}
