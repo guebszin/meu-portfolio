@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Proteção da página admin
   if (!localStorage.getItem("logado")) {
-    window.location.href = "login.html";
+    window.location.href = "frontend/login.html";
   }
 
   // Botão de logout
