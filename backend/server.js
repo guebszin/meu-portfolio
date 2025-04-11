@@ -58,3 +58,13 @@ app.post('/api/projects', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+
+app.get('/frontend/admin.html', (req, res) => {
+  res.redirect('/admin.html');
+});
+
+app.get('/frontend/login.html', (req, res) => {
+  res.redirect('/login.html');
+});
+
+
