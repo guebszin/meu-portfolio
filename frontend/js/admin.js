@@ -134,3 +134,69 @@ document.addEventListener("DOMContentLoaded", () => {
     //window.location.href = "frontend/login.html";
   //}
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('form-projeto');
+  const mensagem = document.getElementById('mensagem');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const projeto = {
+      nome: document.getElementById('nome').value,
+      descricao: document.getElementById('descricao').value,
+      link: document.getElementById('link').value
+    };
+
+    try {
+      const res = await fetch('/api/projects', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(projeto)
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        mensagem.textContent = 'Projeto salvo com sucesso!';
+        mensagem.style.color = 'green';
+        form.reset();
+        carregarProjetos(); // recarrega a tabela
+      } else {
+        mensagem.textContent = data.error || 'Erro ao salvar.';
+        mensagem.style.color = 'red';
+      }
+    } catch (err) {
+      console.error('Erro:', err);
+      mensagem.textContent = 'Erro ao conectar ao servidor.';
+      mensagem.style.color = 'red';
+    }
+  });
+
+  carregarProjetos();
+});
+
+async function carregarProjetos() {
+  const tabela = document.getElementById('tabela-projetos');
+  tabela.innerHTML = '';
+  try {
+    const res = await fetch('/api/projects');
+    const projetos = await res.json();
+
+    projetos.forEach((projeto, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${projeto.nome}</td>
+        <td>${projeto.descricao}</td>
+        <td><a href="${projeto.link}" target="_blank">Ver</a></td>
+        <td>
+          <!-- Ações de editar/deletar podem ir aqui -->
+        </td>
+      `;
+      tabela.appendChild(row);
+    });
+  } catch (err) {
+    console.error('Erro ao carregar projetos:', err);
+  }
+}
+
