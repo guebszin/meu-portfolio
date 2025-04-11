@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mensagem = document.getElementById("mensagem");
   const projetoIdInput = document.getElementById("projeto-id");
   const formTitle = document.getElementById("form-title");
-
+/*
   // Proteção da página admin
   if (!localStorage.getItem("logado")) {
     window.location.href = "frontend/login.html";
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
       logout();
     });
   }
-
+*/
   // Carregar projetos na tabela
   carregarProjetos();
 
@@ -129,8 +129,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Função de logout
-  function logout() {
-    localStorage.removeItem("logado");
-    window.location.href = "frontend/login.html";
-  }
+  //function logout() {
+    //localStorage.removeItem("logado");
+    //window.location.href = "frontend/login.html";
+  //}
 });
