@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (res.ok) {
           localStorage.setItem('auth', 'true');
-          window.location.href = '/admin.html'; // vai para painel
+          window.location.href = 'frontend/admin.html'; // vai para painel
         } else {
           alert(data.message || 'Usuário ou senha inválidos');
         }
