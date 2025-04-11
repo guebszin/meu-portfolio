@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Rota para o caminho raiz
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+  res.sendFile(path.join(__dirname, '../frontend', 'index.html', 'admin.html', 'login.html'));
 });
 
 // API para listar projetos
