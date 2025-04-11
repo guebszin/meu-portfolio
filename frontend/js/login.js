@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Autenticação simples
       if (usuario === "luis" && senha === "26494587bA$") {
         localStorage.setItem("logado", true);
-        window.location.href = "admin.html";
+        window.location.href = "/frontend/admin.html";
       } else {
         erroDiv.textContent = "Usuário ou senha inválidos!";
       }
